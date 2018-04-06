@@ -5,13 +5,13 @@
   <link rel="stylesheet" type="text/css" href="main.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.js"></script>
   <script type="text/paperscript" canvas="myCanvas">
-  
-   for (var x = 0; x < 1000; x+=100) {
-    for (var y = 0; y < 1000; y+=100) {
-       var circle = new Path.Circle(new Point(x, y), 15)
-       circle.fillColor = "orange"   
+
+    function onKeyDown(){
+      var x = Math.floor(Math.random() * 1200)
+      var y = Math.floor(Math.random() * 1200)
+      var myCircle = new Path.Circle(new Point(x, y), 50)
+      myCircle.fillColor = 'purple'
     }
-  }
   </script>
 </head>
 <body>
