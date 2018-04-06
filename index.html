@@ -3,10 +3,20 @@
 <head>
   <title>Muszak</title>
   <link rel="stylesheet" type="text/css" href="main.css">
-  <script type="text/javascript"></script>
-  <script type="text/paperscript" canvas="canvas"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.js"></script>
+  <script type="text/paperscript" canvas="myCanvas">
+    var path = new Path();
+
+    path.strokeColor = 'red';
+    var start = new Point(100, 100);
+    path.moveTo(start);
+    path.lineTo(start + [100, -50]);
+
+    var myCircle = new Path.Circle(new Point(100, 70), 50)
+    myCircle.fillColor = 'purple'
+  </script>
 </head>
 <body>
-
+  <canvas id="myCanvas" resize></canvas>
 </body>
 </html>
