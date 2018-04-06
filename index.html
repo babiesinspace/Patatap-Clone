@@ -5,12 +5,17 @@
   <link rel="stylesheet" type="text/css" href="main.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.js"></script>
   <script type="text/paperscript" canvas="myCanvas">
-
+    function pickRandom(max) {
+      return Math.floor(Math.random() * max)
+    }
     function onKeyDown(){
-      var x = Math.floor(Math.random() * 1200)
-      var y = Math.floor(Math.random() * 1200)
+      var x = pickRandom(1200)
+      var y = pickRandom(1200)
+      var red = String(pickRandom(256))
+      var green = String(pickRandom(256))
+      var blue = String(pickRandom(256))
       var myCircle = new Path.Circle(new Point(x, y), 50)
-      myCircle.fillColor = 'purple'
+      myCircle.fillColor = 'rgb(' + red + ', ' + green + ', ' + blue + ')'
     }
   </script>
 </head>
