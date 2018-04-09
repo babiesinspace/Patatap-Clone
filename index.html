@@ -4,7 +4,10 @@
   <title>Muszak</title>
   <link rel="stylesheet" type="text/css" href="main.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-full.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.js"></script>
+  <script type="text/javascript" src="data.js"></script>
   <script type="text/paperscript" canvas="myCanvas">
+
     var circles = []
 
     function onKeyDown(event){
@@ -12,16 +15,25 @@
       var randomPoint = Point.random()
       var point = maxPoint * randomPoint
       var myCircle = new Path.Circle(point, 500)
-      myCircle.fillColor = 'red'
       circles.push(myCircle)
+      var letter = event.key
+      data[letter].sound.play()
+      myCircle.fillColor = data[letter].color
     }
 
     function onFrame(event) {
       for(var i = 0; i < circles.length; i++){
+        circles[i].scale(0.9);
         circles[i].fillColor.hue += 1;
-        circles[i].scale(.9)
+        if(circles[i].area < 1){
+          circles[i].remove(); // remove the circle from the canvas
+          circles.splice(i, 1); // remove the circle from the array
+          i--; // decrement i so that the loop doesn't skip a circle because of .splice()
+          console.log(circles);
+        }
       }
     }
+
 
   </script>
 </head>
